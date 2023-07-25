@@ -6,6 +6,8 @@ class BookingsController
 {
     public function importBookings() {
 
+
+
     }
 
 }
