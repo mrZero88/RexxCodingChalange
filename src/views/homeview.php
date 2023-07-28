@@ -1,7 +1,3 @@
-<?php
-require_once  __DIR__ . "/../vendor/autoload.php"
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +28,8 @@ require_once  __DIR__ . "/../vendor/autoload.php"
                     </form>
                 </li>
                 <li class="list-group-item">
-                    <form id="search_form" name="search_form" action="../router.php?route=search" method="post" enctype="multipart/form-data">
+                    <form id="search_form" name="search_form" action="../router.php?route=search" method="post"
+                          enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -41,7 +38,7 @@ require_once  __DIR__ . "/../vendor/autoload.php"
                                     </div>
                                     <input name="employeeName" type="text" class="form-control"
                                            aria-label="Employee Name"
-                                           aria-describedby="basic-addon1">
+                                           aria-describedby="basic-addon1" value="<?php echo $employeeName; ?>">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -50,7 +47,7 @@ require_once  __DIR__ . "/../vendor/autoload.php"
                                         <span class="input-group-text" id="basic-addon1">Event Name</span>
                                     </div>
                                     <input name="eventName" type="text" class="form-control" aria-label="Event Name"
-                                           aria-describedby="basic-addon1">
+                                           aria-describedby="basic-addon1" value="<?php echo $eventName; ?>">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -59,7 +56,7 @@ require_once  __DIR__ . "/../vendor/autoload.php"
                                         <span class="input-group-text" id="basic-addon1">Date</span>
                                     </div>
                                     <input name="eventDate" type="date" class="form-control" aria-label="Event Date"
-                                           aria-describedby="basic-addon1">
+                                           aria-describedby="basic-addon1" value="<?php echo $eventDate; ?>">
                                 </div>
                             </div>
                         </div>
@@ -73,35 +70,29 @@ require_once  __DIR__ . "/../vendor/autoload.php"
         </div>
     </div>
     <div class="row" style="margin-top: 15px">
+
         <div class="col-md-12">
+
             <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Event Fee</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <?php foreach ($bookings as $booking): ?>
+                    <tr>
+                        <th scope="row"><?php echo $booking->getParticipationId() ?></th>
+                        <td><?php echo $booking->getEmployeeName() ?></td>
+                        <td><?php echo $booking->getEventName() ?></td>
+                        <td><?php echo $booking->getEventDate() ?></td>
+                        <td><?php echo $booking->getParticipationFee() ?></td>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

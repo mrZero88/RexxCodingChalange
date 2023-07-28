@@ -2,6 +2,7 @@
 
 namespace controllers;
 
+use dao\BookingDao;
 use dao\EventDao;
 use dao\EmployeeDao;
 use dao\ParticipationDao;
@@ -10,9 +11,15 @@ class BookingsController
 {
     public function importBookings(): void
     {
-        $jsonBookings = file_get_contents('../data/bookings.json');
+        $jsonBookings = file_get_contents('data/bookings.json');
         $jsonBookingsData = json_decode($jsonBookings, true);
         $this->insertIntoDatabase($jsonBookingsData);
+    }
+
+    public function searchBookings(string $employeeName, string $eventName, string $eventDate): array
+    {
+        $bookingsDao = new BookingDao();
+        return $bookingsDao->fetchBookingsFilteredBy($employeeName, $eventName, $eventDate);
     }
 
     private function insertIntoDatabase(array $json_bookings_data): void
