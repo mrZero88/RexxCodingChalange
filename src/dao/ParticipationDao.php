@@ -2,6 +2,7 @@
 
 namespace dao;
 
+use Exception;
 use models\Participation;
 
 class ParticipationDao extends MySQLBase
@@ -37,7 +38,7 @@ class ParticipationDao extends MySQLBase
             foreach ($rows as $row) {
                 $participation = new Participation($row["id"], $row["fee"], $row["employee_id"], $row["event_id"]);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         } finally {
             $this->disconnect();
@@ -64,7 +65,7 @@ class ParticipationDao extends MySQLBase
         try {
             $stmt->execute();
             $participation = $this->fetchParticipation($id);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         } finally {
             $this->disconnect();

@@ -2,6 +2,7 @@
 
 namespace dao;
 
+use Exception;
 use models\Event;
 
 class EventDao extends MySQLBase
@@ -36,7 +37,7 @@ class EventDao extends MySQLBase
             foreach ($rows as $row) {
                 $event = new Event($row["id"], $row["name"], $row["date"]);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         } finally {
             $this->disconnect();
@@ -62,7 +63,7 @@ class EventDao extends MySQLBase
         try {
             $stmt->execute();
             $event = $this->fetchEvent($id);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         } finally {
             $this->disconnect();

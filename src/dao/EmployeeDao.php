@@ -2,6 +2,7 @@
 
 namespace dao;
 
+use Exception;
 use models\Employee;
 
 class EmployeeDao extends MySQLBase
@@ -35,7 +36,7 @@ class EmployeeDao extends MySQLBase
             foreach ($rows as $row) {
                 $employee = new Employee($row["id"], $row["email"], $row["name"]);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         } finally {
             $this->disconnect();
@@ -62,7 +63,7 @@ class EmployeeDao extends MySQLBase
             foreach ($rows as $row) {
                 $employee = new Employee($row["id"], $row["email"], $row["name"]);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         } finally {
             $this->disconnect();
