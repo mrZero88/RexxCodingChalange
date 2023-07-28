@@ -1,0 +1,16 @@
+{
+    "name": "danielcorreia/rexx-code-challenge",
+    "autoload": {
+        "classmap": ["src/controllers", "src/dao", "src/models"],
+        "psr-4": {
+            "Danielcorreia\\RexxCodeChallenge\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel",
+            "email": "danielcorreia1988@outlook.com"
+        }
+    ],
+    "require": {}
+}
