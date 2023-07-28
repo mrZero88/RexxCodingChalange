@@ -1,5 +1,5 @@
 <?php
-require_once  __DIR__ . "/../vendor/autoload.php"
+require_once __DIR__ . "/../vendor/autoload.php";
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ require_once  __DIR__ . "/../vendor/autoload.php"
         <div class="col-md-12">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <form id="import_form" name="import_form" action="../router.php?route=import" method="post">
+                    <form id="import_form" name="import_form" action="../index.php?route=import" method="post">
                         <input class="btn btn-secondary"
                                type="file" name="importFile"
                                id="events_import_file"
@@ -32,7 +32,8 @@ require_once  __DIR__ . "/../vendor/autoload.php"
                     </form>
                 </li>
                 <li class="list-group-item">
-                    <form id="search_form" name="search_form" action="../router.php?route=search" method="post" enctype="multipart/form-data">
+                    <form id="search_form" name="search_form" action="../router.php?route=search" method="post"
+                          enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -78,30 +79,13 @@ require_once  __DIR__ . "/../vendor/autoload.php"
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Event Fee</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
                 </tbody>
             </table>
         </div>

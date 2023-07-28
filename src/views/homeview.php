@@ -38,7 +38,7 @@
                                     </div>
                                     <input name="employeeName" type="text" class="form-control"
                                            aria-label="Employee Name"
-                                           aria-describedby="basic-addon1" value="<?php echo $employeeName; ?>">
+                                           aria-describedby="basic-addon1" value="<?php echo $employeeName ?? ''; ?>">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -47,7 +47,7 @@
                                         <span class="input-group-text" id="basic-addon1">Event Name</span>
                                     </div>
                                     <input name="eventName" type="text" class="form-control" aria-label="Event Name"
-                                           aria-describedby="basic-addon1" value="<?php echo $eventName; ?>">
+                                           aria-describedby="basic-addon1" value="<?php echo $eventName ?? ''; ?>">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -56,7 +56,7 @@
                                         <span class="input-group-text" id="basic-addon1">Date</span>
                                     </div>
                                     <input name="eventDate" type="date" class="form-control" aria-label="Event Date"
-                                           aria-describedby="basic-addon1" value="<?php echo $eventDate; ?>">
+                                           aria-describedby="basic-addon1" value="<?php echo $eventDate ?? ''; ?>">
                                 </div>
                             </div>
                         </div>
@@ -84,15 +84,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($bookings as $booking): ?>
-                    <tr>
-                        <th scope="row"><?php echo $booking->getParticipationId() ?></th>
-                        <td><?php echo $booking->getEmployeeName() ?></td>
-                        <td><?php echo $booking->getEventName() ?></td>
-                        <td><?php echo $booking->getEventDate() ?></td>
-                        <td><?php echo $booking->getParticipationFee() ?></td>
-                    </tr>
-                <?php endforeach; ?>
+                <?php if (isset($bookings)): ?>
+                    <?php foreach ($bookings as $booking): ?>
+                        <tr>
+                            <th scope="row"><?php echo $booking->getParticipationId() ?></th>
+                            <td><?php echo $booking->getEmployeeName() ?></td>
+                            <td><?php echo $booking->getEventName() ?></td>
+                            <td><?php echo $booking->getEventDate() ?></td>
+                            <td><?php echo $booking->getParticipationFee() ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 </tbody>
             </table>
         </div>
