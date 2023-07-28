@@ -1,3 +1,7 @@
+<?php
+require_once  __DIR__ . "/../vendor/autoload.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,41 +20,54 @@
         <div class="col-md-12">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <input class="btn btn-primary"
-                           type="file" name="events_import_file"
-                           accept="application/JSON">
-                    <button type="button" class="btn btn-primary" style="float:right">Import Bookings</button>
+                    <form id="import_form" name="import_form" action="post_import.php" method="post">
+                        <input class="btn btn-secondary"
+                               type="file" name="importFile"
+                               id="events_import_file"
+                               accept="application/JSON">
+                        <button name="import_events" form="import_form" type="submit" class="btn btn-primary"
+                                style="float:right">
+                            Import Bookings
+                        </button>
+                    </form>
                 </li>
                 <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Employee Name</span>
+                    <form id="search_form" name="search_form" action="post_search.php" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Employee Name</span>
+                                    </div>
+                                    <input name="employee_name" type="text" class="form-control"
+                                           aria-label="Employee Name"
+                                           aria-describedby="basic-addon1">
                                 </div>
-                                <input name="employee_name" type="text" class="form-control" aria-label="Employee Name"
-                                       aria-describedby="basic-addon1">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Event Name</span>
+                                    </div>
+                                    <input name="event_name" type="text" class="form-control" aria-label="Event Name"
+                                           aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Date</span>
+                                    </div>
+                                    <input name="event_date" type="date" class="form-control" aria-label="Event Date"
+                                           aria-describedby="basic-addon1">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Event Name</span>
-                                </div>
-                                <input name="event_name" type="text" class="form-control" aria-label="Event Name"
-                                       aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Date</span>
-                                </div>
-                                <input name="event_date" type="date" class="form-control" aria-label="Event Date"
-                                       aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                    </div>
+                    </form>
+                </li>
+                <li class="list-group-item">
+                    <button type="submit" form="search_form" class="btn btn-primary" style="float:right">Search
+                    </button>
                 </li>
             </ul>
         </div>
