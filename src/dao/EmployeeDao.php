@@ -6,12 +6,21 @@ use models\Employee;
 
 class EmployeeDao extends MySQLBase
 {
+    /**
+     * @param string $email
+     * @param string $name
+     * @return Employee|null
+     */
     public function fetchOrInsertEmployee(string $email, string $name): ?Employee
     {
         $employee = $this->fetchEmployeeByEmail($email);
         return !empty($employee) ? $employee : $this->insertEmployee($email, $name);
     }
 
+    /**
+     * @param int $id
+     * @return Employee|null
+     */
     private function fetchEmployee(int $id): ?Employee
     {
         $this->connect();
@@ -35,6 +44,10 @@ class EmployeeDao extends MySQLBase
         return $employee;
     }
 
+    /**
+     * @param string $email
+     * @return Employee|null
+     */
     private function fetchEmployeeByEmail(string $email): ?Employee
     {
         $this->connect();

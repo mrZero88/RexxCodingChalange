@@ -6,12 +6,22 @@ use models\Event;
 
 class EventDao extends MySQLBase
 {
+    /**
+     * @param int $id
+     * @param string $name
+     * @param string $date
+     * @return Event|null
+     */
     public function fetchOrInsertEvent(int $id, string $name, string $date): ?Event
     {
         $event = $this->fetchEvent($id);
         return !empty($event) ? $event : $this->insertEvent($id, $name, $date);
     }
 
+    /**
+     * @param int $id
+     * @return Event|null
+     */
     private function fetchEvent(int $id): ?Event
     {
         $this->connect();
@@ -35,6 +45,12 @@ class EventDao extends MySQLBase
         return $event;
     }
 
+    /**
+     * @param int $id
+     * @param string $name
+     * @param string $date
+     * @return Event|null
+     */
     private function insertEvent(int $id, string $name, string $date): ?Event
     {
         $this->connect();

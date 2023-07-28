@@ -6,12 +6,23 @@ use models\Participation;
 
 class ParticipationDao extends MySQLBase
 {
+    /**
+     * @param int $id
+     * @param float $fee
+     * @param int $employeeId
+     * @param int $eventId
+     * @return Participation|null
+     */
     public function fetchOrInsertParticipation(int $id, float $fee, int $employeeId, int $eventId): ?Participation
     {
         $participation = $this->fetchParticipation($id);
         return !empty($participation) ? $participation : $this->insertParticipation($id, $fee, $employeeId, $eventId);
     }
 
+    /**
+     * @param int $id
+     * @return Participation|null
+     */
     private function fetchParticipation(int $id): ?Participation
     {
         $this->connect();
@@ -35,6 +46,13 @@ class ParticipationDao extends MySQLBase
         return $participation;
     }
 
+    /**
+     * @param int $id
+     * @param float $fee
+     * @param int $employeeId
+     * @param int $eventId
+     * @return Participation|null
+     */
     private function insertParticipation(int $id, float $fee, int $employeeId, int $eventId): ?Participation
     {
         $this->connect();

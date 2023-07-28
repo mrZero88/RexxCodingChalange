@@ -13,6 +13,9 @@ abstract class MySQLBase
     private string $password = "Waitangels999";
     private string $dbname = "bookings";
 
+    /**
+     * @return void
+     */
     protected function connect(): void
     {
         if ($this->conn === null || is_resource($this->conn) === false) {
@@ -23,6 +26,9 @@ abstract class MySQLBase
         }
     }
 
+    /**
+     * @return void
+     */
     protected function disconnect(): void
     {
         if ($this->conn != null && is_resource($this->conn) === true) {
