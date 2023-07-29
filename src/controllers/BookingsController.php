@@ -9,6 +9,9 @@ use dao\ParticipationDao;
 
 class BookingsController
 {
+    /**
+     * @return void
+     */
     public function importBookings(): void
     {
         $jsonBookings = file_get_contents('data/bookings.json');
@@ -16,12 +19,22 @@ class BookingsController
         $this->insertIntoDatabase($jsonBookingsData);
     }
 
+    /**
+     * @param string $employeeName
+     * @param string $eventName
+     * @param string $eventDate
+     * @return array
+     */
     public function searchBookings(string $employeeName, string $eventName, string $eventDate): array
     {
         $bookingsDao = new BookingDao();
         return $bookingsDao->fetchBookingsFilteredBy($employeeName, $eventName, $eventDate);
     }
 
+    /**
+     * @param array $bookings
+     * @return float
+     */
     public function sumParticipationFees(array $bookings): float
     {
         $sum = 0.0;
@@ -31,6 +44,10 @@ class BookingsController
         return $sum;
     }
 
+    /**
+     * @param array $json_bookings_data
+     * @return void
+     */
     private function insertIntoDatabase(array $json_bookings_data): void
     {
         foreach ($json_bookings_data as $item) {
