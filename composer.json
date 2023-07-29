@@ -1,7 +1,7 @@
 {
     "name": "danielcorreia/rexx-code-challenge",
     "autoload": {
-        "classmap": ["src/controllers", "src/dao", "src/models"],
+        "classmap": ["src", "src/controllers", "src/dao", "src/models"],
         "psr-4": {
             "Danielcorreia\\RexxCodeChallenge\\": "src/"
         }

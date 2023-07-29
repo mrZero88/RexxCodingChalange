@@ -8,6 +8,12 @@ use models\Event;
 
 class BookingDao extends MySQLBase
 {
+    /**
+     * @param string $employeeName
+     * @param string $eventName
+     * @param string $date
+     * @return array
+     */
     public function fetchBookingsFilteredBy(string $employeeName, string $eventName, string $date): array
     {
         $this->connect();

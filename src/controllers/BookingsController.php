@@ -22,6 +22,15 @@ class BookingsController
         return $bookingsDao->fetchBookingsFilteredBy($employeeName, $eventName, $eventDate);
     }
 
+    public function sumParticipationFees(array $bookings): float
+    {
+        $sum = 0.0;
+        foreach ($bookings as $booking) {
+            $sum += $booking->getParticipationFee();
+        }
+        return $sum;
+    }
+
     private function insertIntoDatabase(array $json_bookings_data): void
     {
         foreach ($json_bookings_data as $item) {

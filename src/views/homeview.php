@@ -17,10 +17,10 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <form id="import_form" name="import_form" action="../router.php?route=import" method="post">
-                        <input class="btn btn-secondary"
+                        <!-- <input class="btn btn-secondary"
                                type="file" name="importFile"
                                id="events_import_file"
-                               accept="application/JSON">
+                               accept="application/JSON"> -->
                         <button name="import_events" form="import_form" type="submit" class="btn btn-primary"
                                 style="float:right">
                             Import Bookings
@@ -84,17 +84,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php if (isset($bookings)): ?>
-                    <?php foreach ($bookings as $booking): ?>
-                        <tr>
-                            <th scope="row"><?php echo $booking->getParticipationId() ?></th>
-                            <td><?php echo $booking->getEmployeeName() ?></td>
-                            <td><?php echo $booking->getEventName() ?></td>
-                            <td><?php echo $booking->getEventDate() ?></td>
-                            <td><?php echo $booking->getParticipationFee() ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                <?php foreach ($bookings ?? [] as $booking): ?>
+                    <tr>
+                        <th scope="row"><?php echo $booking->getParticipationId() ?></th>
+                        <td><?php echo $booking->getEmployeeName() ?></td>
+                        <td><?php echo $booking->getEventName() ?></td>
+                        <td><?php echo $booking->getEventDate() ?></td>
+                        <td><?php echo $booking->getParticipationFee() ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                <tr>
+                    <th scope="row"></th>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo $totalParticipationFees ?? 0.0 ?></td>
+                </tr>
                 </tbody>
             </table>
         </div>

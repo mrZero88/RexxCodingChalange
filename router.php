@@ -18,6 +18,7 @@ if (isset($_REQUEST["route"])) {
         $eventDate = htmlspecialchars($_REQUEST['eventDate']);
 
         $bookings = $bookingsController->searchBookings($employeeName, $eventName, $eventDate);
+        $totalParticipationFees = $bookingsController->sumParticipationFees($bookings);
         echo include("src/views/homeview.php");
     }
 }
