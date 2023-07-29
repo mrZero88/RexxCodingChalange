@@ -20,7 +20,7 @@ require_once __DIR__ . "/vendor/autoload.php";
         <div class="col-md-12">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <form id="import_form" name="import_form" action="../index.php?route=import" method="post">
+                    <form id="import_form" name="import_form" action="router.php?action=import" method="post">
                         <!-- <input class="btn btn-secondary"
                                type="file" name="importFile"
                                id="events_import_file"
@@ -32,7 +32,7 @@ require_once __DIR__ . "/vendor/autoload.php";
                     </form>
                 </li>
                 <li class="list-group-item">
-                    <form id="search_form" name="search_form" action="router.php?route=search" method="post"
+                    <form id="search_form" name="search_form" action="router.php?action=search" method="post"
                           enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-4">
