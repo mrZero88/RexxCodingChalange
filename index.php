@@ -13,6 +13,7 @@ if (isset($_SERVER['PATH_INFO'])) {
 
     if ("/import" === $route) {
         $bookingsController->importBookings();
+        redirect("localhost");
     }
 
     if ("/search" === $route) {
@@ -20,11 +21,20 @@ if (isset($_SERVER['PATH_INFO'])) {
         $eventName = htmlspecialchars($_REQUEST["eventName"]);
         $eventDate = htmlspecialchars($_REQUEST["eventDate"]);
 
-        $bookings = $bookingsController->searchBookings($employeeName, $eventName, $eventDate);
-        $totalParticipationFees = $bookingsController->sumParticipationFees($bookings);
-        $_SESSION["bookings"] = $bookings;
-        $_SESSION["totalParticipationFees"] = $totalParticipationFees;
+        $_SESSION["bookings"] = $bookingsController->searchBookings($employeeName, $eventName, $eventDate);
+        $_SESSION["totalParticipationFees"] = $bookingsController->sumParticipationFees($_SESSION["bookings"]);
+        $_SESSION["employeeName"] = $employeeName;
+        $_SESSION["eventName"] = $eventName;
+        $_SESSION["eventDate"] = $eventDate;
+
+        redirect("localhost");
     }
+} else {
+    echo include("src/views/homeview.php");
 }
 
-echo include("src/views/homeview.php");
+function redirect(string $to): void
+{
+    $baseUrl = $_SERVER['SERVER_NAME'];
+    header(header: "Location: http://$to:8080");
+}
