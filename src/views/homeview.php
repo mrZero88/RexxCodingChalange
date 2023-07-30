@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <form id="import_form" name="import_form" action="../../router.php?action=import" method="post">
+                    <form id="import_form" name="import_form" action="/import" method="post">
                         <!-- <input class="btn btn-secondary"
                                type="file" name="importFile"
                                id="events_import_file"
@@ -28,7 +28,7 @@
                     </form>
                 </li>
                 <li class="list-group-item">
-                    <form id="search_form" name="search_form" action="../../router.php?action=search" method="post"
+                    <form id="search_form" name="search_form" action="/search" method="post"
                           enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-4">
@@ -53,7 +53,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Date</span>
+                                        <span class="input-group-text" id="basic-addon1">Event Date</span>
                                     </div>
                                     <input name="eventDate" type="date" class="form-control" aria-label="Event Date"
                                            aria-describedby="basic-addon1" value="<?php echo $eventDate ?? ''; ?>">
@@ -84,7 +84,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($bookings ?? [] as $booking): ?>
+                <?php foreach ($_SESSION["bookings"] ?? [] as $booking): ?>
                     <tr>
                         <th scope="row"><?php echo $booking->getParticipationId() ?></th>
                         <td><?php echo $booking->getEmployeeName() ?></td>
@@ -98,7 +98,7 @@
                     <td>Total</td>
                     <td></td>
                     <td></td>
-                    <td><?php echo $totalParticipationFees ?? 0.0 ?></td>
+                    <td><?php echo $_SESSION["totalParticipationFees"] ?? 0.0 ?></td>
                 </tr>
                 </tbody>
             </table>
