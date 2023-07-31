@@ -1,10 +1,9 @@
 <?php
 
-namespace dao;
+namespace app\dao;
 
 use Exception;
-use models\Booking;
-use models\Event;
+use app\models\Booking;
 
 class BookingDao extends MySQLBase
 {

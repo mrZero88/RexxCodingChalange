@@ -1,9 +1,9 @@
 <?php
 
-namespace dao;
+namespace app\dao;
 
 use mysqli;
-use src\Config;
+use app\Config;
 
 abstract class MySQLBase
 {
@@ -27,8 +27,6 @@ abstract class MySQLBase
      */
     protected function disconnect(): void
     {
-        if ($this->conn != null && is_resource($this->conn) === true) {
-            $this->conn->close();
-        }
+        if ($this->conn != null && is_resource($this->conn) === true) $this->conn->close();
     }
 }

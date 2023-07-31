@@ -1,9 +1,9 @@
 <?php
 
-namespace dao;
+namespace app\dao;
 
 use Exception;
-use models\Event;
+use app\models\Event;
 
 class EventDao extends MySQLBase
 {

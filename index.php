@@ -3,7 +3,7 @@ require_once __DIR__ . "/vendor/autoload.php";
 ini_set('session.save_path', realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/domains/account/session'));
 session_start();
 
-use controllers\BookingsController;
+use app\controllers\BookingsController;
 
 if (isset($_SERVER['PATH_INFO'])) {
 

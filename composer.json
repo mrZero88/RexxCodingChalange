@@ -1,9 +1,8 @@
 {
     "name": "danielcorreia/rexx-code-challenge",
     "autoload": {
-        "classmap": ["src", "src/controllers", "src/dao", "src/models"],
         "psr-4": {
-            "Danielcorreia\\RexxCodeChallenge\\": "src/"
+            "app\\": "src/"
         }
     },
     "authors": [
@@ -12,5 +11,7 @@
             "email": "danielcorreia1988@outlook.com"
         }
     ],
-    "require": {}
+    "require": {
+        "ext-mysqli": "*"
+    }
 }

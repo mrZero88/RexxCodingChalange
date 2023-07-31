@@ -1,9 +1,9 @@
 <?php
 
-namespace dao;
+namespace app\dao;
 
 use Exception;
-use models\Employee;
+use app\models\Employee;
 
 class EmployeeDao extends MySQLBase
 {

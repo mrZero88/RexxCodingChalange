@@ -1,9 +1,9 @@
 <?php
 
-namespace dao;
+namespace app\dao;
 
 use Exception;
-use models\Participation;
+use app\models\Participation;
 
 class ParticipationDao extends MySQLBase
 {

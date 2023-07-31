@@ -1,11 +1,11 @@
 <?php
 
-namespace controllers;
+namespace app\controllers;
 
-use dao\BookingDao;
-use dao\EventDao;
-use dao\EmployeeDao;
-use dao\ParticipationDao;
+use app\dao\BookingDao;
+use app\dao\EventDao;
+use app\dao\EmployeeDao;
+use app\dao\ParticipationDao;
 
 class BookingsController
 {
